@@ -3,6 +3,9 @@
   padding: 0;
   list-style: none;
 }
+.sidebar-bottom {
+  margin-top: auto; /* push to bottom of sidebar column */
+}
 .sidebar-nav li {
   padding: 12px 20px;
   margin-bottom: 8px;
@@ -89,9 +92,6 @@ button:hover, input[type="submit"]:hover {
   transform: scale(1.04);
 }
 
-form {
-  margin: 24px 0;
-}
 
 input, select, textarea {
   border: 1px solid #d1d5db;

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Book, Author, BookInstance, Genre
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 def index(request):
 
     num_books = Book.objects.all().count()
@@ -25,7 +25,9 @@ def index(request):
     
     return render(request, 'index.html', context=context)
 
-class BookListView(generic.ListView):
+class BookListView(LoginRequiredMixin,generic.ListView):
+    login_url = '/accounts/login/'
+    redirect_field_name = 'redirect_to'
     model = Book
     context_object_name = 'book_list'
     paginate_by = 3
