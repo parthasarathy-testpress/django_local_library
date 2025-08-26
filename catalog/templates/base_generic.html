@@ -30,19 +30,17 @@
           </li>
         </ul>
         <ul class="sidebar-nav sidebar-bottom">
-          …
           {% if user.is_authenticated %}
-          <li class="d-flex align-items-center justify-content-between sidebar-user">
-            <span class="badge bg-light text-dark">User: {{ user.get_username }}</span>
+          <li class="sidebar-user"><span class="badge bg-light text-dark">User: {{ user.get_username }}</span></li>
+          <li class="sidebar-user">
             <form id="logout-form" method="post" action="{% url 'logout' %}" class="m-0">
               {% csrf_token %}
-              <a href="#" class="small logout-link" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
+              <a href="#" class="logout-link" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
             </form>
           </li>
           {% else %}
           <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
           {% endif %}
-          …
         </ul>
         {% endblock %}
       </div>
