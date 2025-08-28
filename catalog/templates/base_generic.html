@@ -32,6 +32,7 @@
         <ul class="sidebar-nav sidebar-bottom">
           {% if user.is_authenticated %}
           <li class="sidebar-user"><span class="badge bg-light text-dark">User: {{ user.get_username }}</span></li>
+          <li><a href="{% url 'my-borrowed' %}">My Borrowed</a></li>
           <li class="sidebar-user">
             <form id="logout-form" method="post" action="{% url 'logout' %}" class="m-0">
               {% csrf_token %}
