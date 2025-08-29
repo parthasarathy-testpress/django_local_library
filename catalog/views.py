@@ -83,7 +83,7 @@ def renew_book_librarian(request, pk):
             book_instance.due_back = form.cleaned_data['renewal_date']
             book_instance.save()
 
-            return HttpResponseRedirect(reverse(''))
+            return HttpResponseRedirect(reverse('index'))
 
     else:
         proposed_renewal_date = datetime.date.today() + datetime.timedelta(weeks=3)
