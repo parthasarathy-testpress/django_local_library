@@ -29,6 +29,15 @@
             <a href="{% url 'authors' %}">All authors</a>
           </li>
         </ul>
+        {% if user.is_staff %}
+        <hr>
+        <ul class="sidebar-nav">
+        <h5 class="sidebar-heading text-center">STAFF</h5>
+        {% if perms.catalog.add_author %}
+           <li><a href="{% url 'author-create' %}">Create author</a></li>
+        {% endif %}
+        </ul>
+        {% endif %}
         <ul class="sidebar-nav sidebar-bottom">
           {% if user.is_authenticated %}
           <li class="sidebar-user"><span class="badge bg-light text-dark">User: {{ user.get_username }}</span></li>
