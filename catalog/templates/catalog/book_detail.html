@@ -1,6 +1,17 @@
 {% extends "base_generic.html" %} {% block content %}
 <h1>Title: {{ book.title }}</h1>
 
+{% if user.is_staff %}
+<div class="btn-group" role="group" aria-label="Book actions">
+  {% if perms.catalog.change_book %}
+    <a href="{% url 'book-update' book.pk %}" class="btn btn-primary btn-sm">Update</a>
+  {% endif %}
+  {% if perms.catalog.delete_book %}
+    <a href="{% url 'book-delete' book.pk %}" class="btn btn-danger btn-sm">Delete</a>
+  {% endif %}
+</div>
+{% endif %}
+
 <p>
   <strong>Author:</strong>
   <a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a>
